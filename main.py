@@ -23,7 +23,7 @@ html_boilerPlate=f"""<!DOCTYPE html>
     <title>{dir_name.capitalize()}</title>
 
     <link rel="icon" type="image/svg" href="./assets/favicon.png.svg">
-    <link rel="stylesheet" href="./css/tailwind.css">
+    <link rel="stylesheet" href="./css/output.css">
 
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,18 +44,21 @@ html_boilerPlate=f"""<!DOCTYPE html>
 </html>
 """
 
+
 with open(r"C:\Users\varma\Documents\jan2025\wdpn.0.1\boilerPlate\index.html", "w") as file:
     file.write(html_boilerPlate);
 
 
 try:
     shutil.copytree(boiler_plate_path, new_project_path);
-    os.system(f"code {new_project_path}");
-    # print(new_project_path)
-    # os.system(f"cd ${new_project_path}");
-    # os.system("npm init -y");
-    # os.system("npm install -D  tailwindcss postcss autoprefixer vite");
-    # os.system("npx tailwind init -p");
-    print("Please add the start script to the the package.json file for vite")
+    print("Please wait while your project is being generated");
+    os.chdir(new_project_path);
+    os.system("npm init -y");
+    os.system("npm install -D  tailwindcss vite");
+    os.system("npx tailwind init");
+    print("Please add the entry point for tailwind, by copy and pasting './index.html' to the content array in the tailwind config file. \nThis should get rid of the error \n(warn - No utility classes were detected in your source files. If this is unexpected, \ndouble-check the `content` option in your Tailwind CSS configuration. \nwarn - https://tailwindcss.com/docs/content-configuration)");
+    print("Please add the start script to the the package.json file for vite");
+    os.system("code .");
+    os.system("npx tailwindcss -i ./css/input.css -o ./css/output.css --watch");
 except FileExistsError:
-    print(f"\nThe directory {dir_name} already exist\n")
+    print(f"\nThe directory {dir_name} already exist\n");

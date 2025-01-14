@@ -80,7 +80,7 @@ try:
     print(f"\nAlmost done. Now cd into {dir_name}\n")
     print("\n1. Please add the entry point for tailwind, by copy and pasting './index.html' to the content array in the tailwind config file.\n");
     print('\n2. Please add the dev start script ( "dev": "vite" )  to the the package.json file for vite\n');
-    print("Please open a seperate tab and run the mentioned below to generate the output.css file to start using tailwind \n npx tailwindcss -i ./css/input.css -o ./css/output.css --watch \n");
+    print("Please open a seperate tab in your terminal, in the same project directory and run the mentioned below to generate the output.css file to start using tailwind \n npx tailwindcss -i ./css/input.css -o ./css/output.css --watch \n");
     print("\nNow opening VS Code if installed\n")
     os.system("code .");
 

@@ -1,6 +1,6 @@
-import shutil
 import sys
 import os
+
 
 
 try:
@@ -12,7 +12,6 @@ except IndexError:
 current_working_path=os.getcwd();
 
 new_project_path=fr"{current_working_path}\{dir_name}";
-boiler_plate_path=r"C:\Users\varma\Documents\jan2025\wdpn.0.1\boilerPlate";
 
 
 html_boilerPlate=f"""<!DOCTYPE html>
@@ -22,7 +21,7 @@ html_boilerPlate=f"""<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{dir_name.capitalize()}</title>
 
-    <link rel="icon" type="image/svg" href="./assets/favicon.png.svg">
+    <link rel="icon" type="image/svg" href="./assets/favicon.svg">
     <link rel="stylesheet" href="./css/output.css">
 
     <!-- google font -->
@@ -32,7 +31,7 @@ html_boilerPlate=f"""<!DOCTYPE html>
     <!-- google font -->
 
     <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> -->
     <!-- font awesome -->
 
 </head>
@@ -45,20 +44,45 @@ html_boilerPlate=f"""<!DOCTYPE html>
 """
 
 
-with open(r"C:\Users\varma\Documents\jan2025\wdpn.0.1\boilerPlate\index.html", "w") as file:
-    file.write(html_boilerPlate);
+input_css_tailwind_boilerPlate="""@tailwind base;
+@tailwind components;
+@tailwind utilities;
+"""
+
+default_browser_icon='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M284.3 11.7c-15.6-15.6-40.9-15.6-56.6 0l-216 216c-15.6 15.6-15.6 40.9 0 56.6l216 216c15.6 15.6 40.9 15.6 56.6 0l216-216c15.6-15.6 15.6-40.9 0-56.6l-216-216z"/></svg>'
 
 
 try:
-    shutil.copytree(boiler_plate_path, new_project_path);
-    print("Please wait while your project is being generated");
+    print("Please wait a couple seconds while your project is being generated");
+    os.mkdir(new_project_path);
     os.chdir(new_project_path);
+    os.mkdir("css");
+    os.mkdir("js");
+    os.mkdir("assets")
+
+    with open(fr"{new_project_path}\index.html", "w") as file:
+        file.write(html_boilerPlate);
+    
+    with open(fr"{new_project_path}\css\input.css", "w") as file:
+        file.write(input_css_tailwind_boilerPlate);
+    
+    with open(fr"{new_project_path}\js\app.js", "w") as file:
+        file.write("");
+    
+    with open(fr"{new_project_path}\assets\favicon.svg", "w") as file:
+        file.write(default_browser_icon);
+
+
     os.system("npm init -y");
     os.system("npm install -D  tailwindcss vite");
     os.system("npx tailwind init");
-    print("Please add the entry point for tailwind, by copy and pasting './index.html' to the content array in the tailwind config file. \nThis should get rid of the error \n(warn - No utility classes were detected in your source files. If this is unexpected, \ndouble-check the `content` option in your Tailwind CSS configuration. \nwarn - https://tailwindcss.com/docs/content-configuration)");
-    print("Please add the start script to the the package.json file for vite");
+
+    print(f"\nAlmost done. Now cd into {dir_name}\n")
+    print("\n1. Please add the entry point for tailwind, by copy and pasting './index.html' to the content array in the tailwind config file.\n");
+    print('\n2. Please add the dev start script ( "dev": "vite" )  to the the package.json file for vite\n');
+    print("Please open a seperate tab and run the mentioned below to generate the output.css file to start using tailwind \n npx tailwindcss -i ./css/input.css -o ./css/output.css --watch \n");
+    print("\nNow opening VS Code if installed\n")
     os.system("code .");
-    os.system("npx tailwindcss -i ./css/input.css -o ./css/output.css --watch");
+
 except FileExistsError:
     print(f"\nThe directory {dir_name} already exist\n");

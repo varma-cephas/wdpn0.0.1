@@ -13,8 +13,9 @@ web dev pen
     py main.py directory_name
 
 ## Todo
-    [ ] Install script globally to be ran from any directory
+    [ ] Install script globally so that it's possible to be ran from any directory
 
-### Please note that I'm currently looking for a solution to install the script globally. In the meantime you can run the script by running the script file in a directory where you store all your projects.
+### Please note that I'm currently looking for a solution to install the script globally. In the meantime you can use the script by running the script file in a directory where you store all your projects.
+    The following script was written in a Windows environment, so if the `path` or  `directories` doesn't work for you, please tweak them to your OS. Thank you! 
 
-## Any feedback or improvement tip is highly welcomed. Thank you!
+## Any feedback, questions or improvement tips are highly welcomed. Thank you!

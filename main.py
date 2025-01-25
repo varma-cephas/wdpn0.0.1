@@ -83,6 +83,7 @@ try:
     print("Please open a seperate tab in your terminal, in the same project directory and run the mentioned below to generate the output.css file to start using tailwind \n npx tailwindcss -i ./css/input.css -o ./css/output.css --watch \n");
     print("\nNow opening VS Code if installed\n")
     os.system("code .");
+    print("\nRun npm run dev to start the vite server")
 
 except FileExistsError:
     print(f"\nThe directory {dir_name} already exist\n");
